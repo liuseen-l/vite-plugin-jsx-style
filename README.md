@@ -5,13 +5,13 @@
 支持在tsx，jsx中使用css.
 
 
-## 📦 Install
+## Install
 
 ```bash
 pnpm add -D vite-plugin-jsx-style
 ```
 
-## 🦄 Usage
+## Usage
 
 Let's use a VUE project as an example
 
@@ -28,16 +28,15 @@ export default defineConfig({
     react()
   ],
 })
-
-
 ```
-## 📄 License
-
-[MIT License](https://github.com/liuseen-l/vite-plugin-jsx-style/blob/main/LICENSE) © 2019-PRESENT [LiuSeen](https://github.com/liuseen-l)
-
 
 ## Features
 - 支持样式隔离
 
 ## Todo
 - [ ] 样式隔离
+
+## 📄 License
+
+[MIT License](https://github.com/liuseen-l/vite-plugin-jsx-style/blob/main/LICENSE) © 2019-PRESENT [LiuSeen](https://github.com/liuseen-l)
+
