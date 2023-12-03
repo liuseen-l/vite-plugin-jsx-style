@@ -40,4 +40,4 @@ export default defineConfig({
 + 支持样式隔离
 
 ## Todo
-[] 样式隔离
+[ ] 样式隔离
