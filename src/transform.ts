@@ -20,7 +20,6 @@ function parseStyle(matchs: RegExpMatchArray[]): TypeParseStyle[] {
       content: s.content
     }
   })
-
 }
 
 
@@ -31,7 +30,6 @@ export const transform = (code: string, id: string, virtualModules: Record<strin
     if (!matchs.length) {
       return
     }
-
     const res = parseStyle(matchs)
 
     const s = new MagicString(code);
@@ -62,8 +60,6 @@ export const transform = (code: string, id: string, virtualModules: Record<strin
     //   const end = start + c[0].length
     //   s.remove(start, end)
     // })
-
-
     return {
       code: s.toString(),
       map: s.generateMap()
