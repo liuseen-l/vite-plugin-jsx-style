@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-jsx-style",
-  "version": "0.0.2-beta.0",
+  "version": "0.0.2-beta.1",
   "description": "Css in js by template literals",
   "packageManager": "pnpm@8.6.12",
   "author": "liuseen-l",
