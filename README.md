@@ -1,6 +1,6 @@
 # vite-plugin-jsx-style
 
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-check-scoped?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-check-scoped)
+[![NPM version](https://img.shields.io/npm/v/vite-plugin-jsx-style?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-jsx-style)
 
 支持在tsx，jsx中使用css.
 
@@ -31,9 +31,11 @@ export default defineConfig({
 ```
 
 ## Features
+- 支持scss，less等预处理器
 - 支持样式隔离
 
 ## Todo
+- [ ] 支持scss,less等预处理器
 - [ ] 样式隔离
 
 ## 📄 License
