@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite';
 import { transform } from './transform';
-import { TypevirtualModuleIds } from './types';
+import type { TypevirtualModuleIds } from './types';
 
 
 export default function InnerStylePlugin(): Plugin {

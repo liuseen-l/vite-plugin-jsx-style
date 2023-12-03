@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <h1>Vite + React</h1>
-      <div className="card">
+      <div data-dwa className="card">
         <button onClick={() => setCount(count => count + 1)}>
           count is {count}
         </button>
@@ -34,6 +34,9 @@ export default App
     text-align: center;
   }
 
+  .card[data-dwa] {
+    color: yellow;
+  }
   .logo {
     height: 6em;
     padding: 1.5em;

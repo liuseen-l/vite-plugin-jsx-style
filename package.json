@@ -1,24 +1,28 @@
 {
   "name": "vite-plugin-jsx-style",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Css in js by template literals",
+  "packageManager": "pnpm@8.6.12",
+  "author": "liuseen-l",
   "license": "ISC",
-  "type": "module",
-  "keywords": [],
+  "keywords": [
+    "vite-plugin-jsx-style",
+    "vite-plugin",
+    "css in js",
+    "jsx-style"
+  ],
   "scripts": {
     "test": "vitest",
     "play": "vite playground",
-    "dev": "npm-run-all play build:dev",
     "build:dev": "pnpm run build --watch",
     "build": "pnpm run clean && rollup --config rollup.config.ts --configPlugin typescript",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "release": "bumpp -r"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
     },
     "./*": "./*"
   },
@@ -28,12 +32,25 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "peerDependencies": {
+    "vite": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.1",
     "@antfu/eslint-config": "^2.1.2",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "^20.10.1",
+    "bump": "^0.2.5",
     "crypto-js": "^4.2.0",
     "eslint": "^8.53.0",
     "lint-staged": "^15.1.0",
@@ -47,16 +64,5 @@
     "typescript": "^5.3.2",
     "vite": "^5.0.4",
     "vitest": "^0.34.6"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "eslint --fix"
-    ]
-  },
-  "devDependencies": {
-    "@types/crypto-js": "^4.2.1"
   }
 }
