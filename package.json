@@ -1,0 +1,62 @@
+{
+  "name": "vite-plugin-jsx-style",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "keywords": [],
+  "scripts": {
+    "test": "vitest",
+    "play": "vite playground",
+    "dev": "npm-run-all play build:dev",
+    "build:dev": "pnpm run build --watch",
+    "build": "pnpm run clean && rollup --config rollup.config.ts --configPlugin typescript",
+    "clean": "rimraf dist"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@antfu/eslint-config": "^2.1.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/node": "^20.10.1",
+    "crypto-js": "^4.2.0",
+    "eslint": "^8.53.0",
+    "lint-staged": "^15.1.0",
+    "magic-string": "^0.30.5",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.6.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "simple-git-hooks": "^2.9.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.4",
+    "vitest": "^0.34.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.1"
+  }
+}

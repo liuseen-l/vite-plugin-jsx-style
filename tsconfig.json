@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "temp",
+    "sourceMap": false,
+    "target": "esnext",
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "jsx": "preserve",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "noUnusedParameters": true
+  },
+  "include": [
+    "src"
+  ],
+}
