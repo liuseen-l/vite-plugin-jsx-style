@@ -37,4 +37,7 @@ export default defineConfig({
 
 
 ## Features
-  + 支持样式隔离
++ 支持样式隔离
+
+## Todo
+[] 样式隔离
