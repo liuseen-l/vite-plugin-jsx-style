@@ -117,7 +117,7 @@ export default App
 ```
 
 ## Features
-- 支持scss，less等预处理器 √
+- 支持scss，less等预处理器
 - 支持样式隔离
 
 ## Todo
