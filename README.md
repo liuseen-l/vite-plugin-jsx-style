@@ -37,4 +37,4 @@ export default defineConfig({
 
 
 ## Features
-支持scoped
+  + 支持样式隔离
