@@ -5,23 +5,23 @@ import type { TypevirtualModuleIds } from './types';
 
 export default function InnerStylePlugin(): Plugin {
   const virtualModules: Record<string, TypevirtualModuleIds> = {}
-  const resolvedVirtualModules: Record<string, Pick<TypevirtualModuleIds, 'virtualModule'>> = {}
+  const resolvedVirtualModules: Record<string, Pick<TypevirtualModuleIds, 'content'>> = {}
 
   return {
-    name: 'vite-plugin-innerStyle',
+    name: 'vite-plugin-jsx-style',
     enforce: 'pre',
     resolveId(id) {
       if (virtualModules[id]) {
         const resolvedVirtualModuleId = '\0' + id
         resolvedVirtualModules[resolvedVirtualModuleId] = {
-          virtualModule: virtualModules[id].virtualModule
+          content: virtualModules[id].content
         }
         return resolvedVirtualModuleId
       }
     },
     load(id) {
       if (resolvedVirtualModules[id]) {
-        return resolvedVirtualModules[id].virtualModule
+        return resolvedVirtualModules[id].content
       }
     },
     transform(code: string, id: string) {

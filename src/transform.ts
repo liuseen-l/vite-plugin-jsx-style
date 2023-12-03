@@ -1,8 +1,27 @@
+import { parse } from '@vue/compiler-sfc';
 import sha256 from "crypto-js/sha256";
 import MagicString from "magic-string";
 import path from "node:path";
 import { STYLE_RE, SUF_FIX } from "./const";
 import { TypevirtualModuleIds } from "./types";
+
+type TypeParseStyle = {
+  lang: string,
+  content: string
+}
+
+function parseStyle(matchs: RegExpMatchArray[]): TypeParseStyle[] {
+  const code = matchs.map(m => m[0]).join('\n')
+  const { descriptor: { styles } } = parse(code)
+
+  return styles.map(s => {
+    return {
+      lang: s.lang || 'css',
+      content: s.content
+    }
+  })
+
+}
 
 
 export const transform = (code: string, id: string, virtualModules: Record<string, TypevirtualModuleIds>) => {
@@ -13,15 +32,29 @@ export const transform = (code: string, id: string, virtualModules: Record<strin
       return
     }
 
-    const unicid = sha256(id).toString()
-    const virtualId = `virtual:${unicid}.css`
-    const _import = `import '${virtualId}'`
-    const virtualModule = matchs.map(m => m[1]).join('')
+    const res = parseStyle(matchs)
 
     const s = new MagicString(code);
+    for (const c of res) {
+      const unicid = sha256(id + `${c.content}`).toString()
+      const virtualId = `virtual:${unicid}.${c.lang}`
+      const _import = `import '${virtualId}'`
 
-    // append vitrulModule
-    s.prepend(`${_import}\n`)
+      virtualModules[virtualId] = {
+        raw: {
+          id,
+          code,
+        },
+        unicid,
+        virtualId,
+        matchs,
+        _import,
+        content: c.content
+      }
+
+      // append vitrulModule
+      s.prepend(`${_import}\n`)
+    }
 
     // remove <style></style>
     // matchs.forEach((c) => {
@@ -30,17 +63,6 @@ export const transform = (code: string, id: string, virtualModules: Record<strin
     //   s.remove(start, end)
     // })
 
-    virtualModules[virtualId] = {
-      raw: {
-        id,
-        code,
-      },
-      unicid,
-      virtualId,
-      matchs,
-      _import,
-      virtualModule
-    }
 
     return {
       code: s.toString(),

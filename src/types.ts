@@ -6,6 +6,6 @@ export type TypevirtualModuleIds = {
   matchs: RegExpMatchArray[]
   unicid: string,
   virtualId: string,
-  virtualModule: string
+  content: string
   _import: string,
 }
