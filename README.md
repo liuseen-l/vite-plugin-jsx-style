@@ -31,7 +31,7 @@ export default defineConfig({
 })
 ```
 
->project
+> in project
 ```tsx
 import { useState } from 'react'
 
